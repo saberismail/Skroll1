@@ -1,0 +1,259 @@
+{% extends "TwigBundle::layout.html.twig" %}
+
+{% block head %}
+    <link rel="icon" sizes="16x16" href="{{ asset('favicon.ico') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/acmedemo/css/demo.css') }}" />
+    
+     <link href="{{ asset('bundles/acmedemo/assets/css/bootstrap.css" rel="stylesheet') }}"/>
+    <link href="{{ asset('bundles/acmedemo/assets/css/bootstrap-responsive.css" rel="stylesheet') }}"/>
+    <link href="{{ asset('bundles/acmedemo/assets/css/typography.css" rel="stylesheet') }}"/>
+    <link href="{{ asset('bundles/acmedemo/assets/css/extension.css" rel="stylesheet') }}"/>
+    <link rel="{{ asset('bundles/acmedemo/stylesheet" href="stylesheets/prettyPhoto.css') }}"/>
+    <link rel="{{ asset('bundles/acmedemo/stylesheet" href="stylesheets/isotope.css') }}"/>
+    <link rel="{{ asset('bundles/acmedemo/stylesheet" href="stylesheets/graph.css') }}"/>
+    <!-- Edit the following style.css file to change the theme look and feel -->
+  <link rel="stylesheet" href="{{ asset('bundles/acmedemo/stylesheets/themes/default/default.css" type="text/css" media="screen') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/acmedemo/stylesheets/nivo-slider.css" type="text/css" media="screen') }}" />
+	<link rel="stylesheet" href="{{ asset('bundles/acmedemo/stylesheets/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/acmedemo/stylesheets/home1.css') }}">
+    
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="{{ asset('bundles/acmedemo/assets/ico/favicon.ico') }}">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('bundles/acmedemo/assets/ico/apple-touch-icon-144-precomposed.png') }}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('bundles/acmedemo/assets/ico/apple-touch-icon-114-precomposed.png') }}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('bundles/acmedemo/assets/ico/apple-touch-icon-72-precomposed.png') }}">
+    <link rel="apple-touch-icon-precomposed" href="{{ asset('bundles/acmedemo/assets/ico/apple-touch-icon-57-precomposed.png') }}">
+
+{% endblock %}
+
+{% block title 'Demo Bundle' %}
+
+{% block body %}
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="flash-message">
+            <em>Notice</em>: {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    {% block content_header %}
+        <ul id="menu">
+            {% block content_header_more %}
+                <li><a href="{{ path('_demo') }}">Demo Home</a></li>
+            {% endblock %}
+        </ul>
+
+        <div style="clear: both"></div>
+    {% endblock %}
+
+    <div class="block">
+        {% block content %}{% endblock %}
+    </div>
+
+    {% if code is defined %}
+        <h2>Code behind this page</h2>
+        <div class="block">
+            <div class="symfony-content">{{ code|raw }}</div>
+        </div>
+    {% endif %}
+    
+   
+	<script src="{{ asset('bundles/acmedemo/javascripts/jquery-1.7.2.min.js') }}"></script>
+	<script src="{{ asset('bundles/acmedemo/assets/js/bootstrap-transition.js') }}"></script>
+    <script src="{{ asset('bundles/acmedemo/assets/js/bootstrap-alert.js') }}"></script>
+    <script src="{{ asset('bundles/acmedemo/assets/js/bootstrap-modal.js') }}"></script>
+    <script src="{{ asset('bundles/acmedemo/assets/js/bootstrap-dropdown.js') }}"></script>
+    <script src="{{ asset('bundles/acmedemo/assets/js/bootstrap-scrollspy.js') }}"></script>
+    <script src="{{ asset('bundles/acmedemo/assets/js/bootstrap-tab.js') }}"></script>
+    <script src="{{ asset('bundles/acmedemo/assets/js/bootstrap-tooltip.js') }}"></script>
+    <script src="{{ asset('bundles/acmedemo/assets/js/bootstrap-popover.js') }}"></script>
+    <script src="{{ asset('bundles/acmedemo/assets/js/bootstrap-button.js') }}"></script>
+    <script src="{{ asset('bundles/acmedemo/assets/js/bootstrap-collapse.js') }}"></script>
+    <script src="{{ asset('bundles/acmedemo/assets/js/bootstrap-carousel.js') }}"></script>
+    <script src="{{ asset('bundles/acmedemo/assets/js/bootstrap-typeahead.js') }}"></script>
+    <script src="{{ asset('bundles/acmedemo/assets/js/bootstrap-affix.js') }}"></script>
+  	<script src="{{ asset('bundles/acmedemo/javascripts/jquery.localscroll-1.2.7-min.js') }}"></script>
+  	<script src="{{ asset('bundles/acmedemo/javascripts/jquery.scrollTo-1.4.2-min.js') }}"></script>
+    <script src="{{ asset('bundles/acmedemo/javascripts/jquery.prettyPhoto.js') }}"></script> 
+	  <script src="{{ asset('bundles/acmedemo/javascripts/jquery.easing.1.3.js') }}"></script>
+    <script src="{{ asset('bundles/acmedemo/javascripts/jquery.isotope.min.js') }}"></script>
+    <script src="{{ asset('bundles/acmedemo/javascripts/fake-element.js') }}"></script>
+    <script src="{{ asset('bundles/acmedemo/javascripts/form-validation.js') }}"></script>
+    <script src="{{ asset('bundles/acmedemo/javascripts/waypoints.min.js') }}"></script>
+  	<script src="{{ asset('bundles/acmedemo/javascripts/scroll.js') }}"></script>
+
+    
+    
+    <script type="text/javascript" src="{{ asset('bundles/acmedemo/javascripts/jquery.ba-cond.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('bundles/acmedemo/javascripts/jquery.slitslider.js') }}"></script>
+    
+    <script type="text/javascript">
+    $(window).load(function() {
+		
+		var win_height = window.innerHeight;
+		$('.page').css('min-height',win_height-166+'px');
+        
+		$('.big_circle').mouseenter(function(){
+			$(this).children('p').delay(250).fadeIn(500);
+		});
+		
+		$('.big_circle').mouseleave(function(){
+			$(this).children('p').fadeOut(300);
+		});
+		
+		var no_of_testimonials = $('.testimonial_collection .testimonial').length;
+		
+		for(i=1;i<=no_of_testimonials;i++)
+		{	
+			
+			if(i==1)
+			$('.testimonial_nav').append('<a href="#" class="active_nav" data-index="'+i+'"></a>');
+			else
+			$('.testimonial_nav').append('<a href="#" data-index="'+i+'"></a>');
+		}
+		
+		$('.testimonial_nav a').click(function(){
+			$('.testimonial').hide();
+			$('.testimonial_nav a').removeClass('active_nav');
+			$(this).addClass('active_nav');
+			var target_index = $(this).attr('data-index');
+			$('.testimonial_collection .testimonial:nth-child('+target_index+')').fadeIn(1000);
+			return false;
+		});
+		
+		$('.nav-tabs a').click(function (e) {
+		  e.preventDefault();
+		  $(this).tab('show');
+		})
+		
+		$('#f-none').trigger('click');
+		
+		$('.welcome_txt a').click(function(){
+			$('.links a:nth-child(2)').trigger('click');
+			return false;
+		});
+		
+		$('.quick_connect a').click(function(){
+			$('.links a:last-child').trigger('click');
+			return false;
+		});
+		
+    });
+    </script>
+
+    
+
+  	<!-- Mobile Navigation Scroll Setup -->
+	<script type="text/javascript">
+    	function moveTo(contentArea){
+        	var goPosition = $(contentArea).offset().top;
+        	$('html,body').animate({ scrollTop: goPosition}, 'slow');
+        }
+    </script>
+
+
+	<!-- Sticky nav -->
+	<script>
+
+  
+	$(window).load(function(){
+
+      //NAVIGATION MENU COLOR CHANGE ON CLILCK
+      $('.desktop-nav a').click(function(){
+        var colIndex = $(this).attr('title');
+        $('.desktop-nav a').removeClass('def-link');
+        $(this).addClass('def-link');
+        $(this).addClass(colIndex+'-link');
+      })
+
+  			
+			//PORTFOLIO IMAGE HOVER
+			$('.element').mouseenter(function(){
+				$(this).find('img').stop().animate({opacity:'0'},'slow')
+				$(this).find('.gallery-caps').stop().animate({opacity:'1'},'slow')
+			})
+
+			$('.element').mouseleave(function(){
+				$('.element').find('.gallery-caps').stop().animate({opacity:'0'},'slow')
+				$('.element').find('img').stop().animate({opacity:'1'},'slow')
+			})
+
+			//PORTFOLIO FILTER ON CLICK
+			$('.inner-link a').click(function(){
+				$('.inner-link a').removeClass('selected');
+				$(this).addClass('selected');
+			})
+
+			//Services More Content triggering
+			$('.services-more').click(function(){
+				var servIndex = $(this).attr('data-services');
+				//alert(servIndex);
+				$('#'+servIndex+'-content').slideToggle();
+			})
+
+		});
+	</script>
+	
+	<script>
+
+// Initialize prettyPhoto plugin
+	$(".portfolio a[data-gal^='prettyPhoto']").prettyPhoto({
+		theme:'light_square', 
+		autoplay_slideshow: false, 
+		overlay_gallery: false, 
+		show_title: true
+	});
+
+
+  
+		
+//MASONRY PORTFOLIO INIT:
+    $(window).load(function(){
+      
+      var $container = $('#container');
+
+      $container.isotope({
+        itemSelector : '.element',
+        layoutMode : 'masonry' 
+      });
+      
+      
+      var $optionSets = $('#options .option-set'),
+          $optionLinks = $optionSets.find('a');
+
+      $optionLinks.click(function(){
+        
+		var $this = $(this);
+        // don't proceed if already selected
+        /*if ( $this.hasClass('selected') ) {
+          return false;
+        }*/
+		
+        var $optionSet = $this.parents('.option-set');
+        $optionSet.find('.selected').removeClass('selected');
+        $this.addClass('selected');
+  
+        // make option object dynamically, i.e. { filter: '.my-filter-class' }
+        var options = {},
+            key = $optionSet.attr('data-option-key'),
+            value = $this.attr('data-option-value');
+        // parse 'false' as false boolean
+        value = value === 'false' ? false : value;
+        options[ key ] = value;
+        if ( key === 'layoutMode' && typeof changeLayoutMode === 'function' ) {
+          // changes in layout modes need extra logic
+          changeLayoutMode( $this, options )
+        } else {
+          // creativewise, apply new options
+          $container.isotope( options );
+        }
+        
+		
+        return false;
+      });
+
+      
+    });
+  </script>	
+  
+  
+{% endblock %}
